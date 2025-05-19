@@ -1,5 +1,23 @@
 import os
 import pandas as pd
+from preprocessing import clean_text
+from feature_extraction import get_tfidf_features
+from classification import train_and_evaluate
+
+# Veriyi yükle
+df = pd.read_csv("bbc/bbc-text.csv")
+
+# Temizleme
+df['cleaned_text'] = df['text'].apply(clean_text)
+
+# TF-IDF özellikleri
+X, vectorizer = get_tfidf_features(df['cleaned_text'])
+
+# Etiketler
+y = df['category']
+
+# Modeli eğit ve değerlendir
+model = train_and_evaluate(X, y)
 
 def load_bbc_dataset(folder_path):
     categories = os.listdir(folder_path)
