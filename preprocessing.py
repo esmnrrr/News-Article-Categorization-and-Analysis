@@ -9,9 +9,7 @@ nltk.download('punkt')
 nltk.download('wordnet')
 
 stop_words = set(stopwords.words('english'))
-from nltk.stem import PorterStemmer # Stemming için eklenen kütüphane (better -> bett)
-stemmer = PorterStemmer()
-lemmatizer = WordNetLemmatizer() # Lemmatization için eklenen kütüphane (better -> good)
+lemmatizer = WordNetLemmatizer()
 
 def clean_text(text):
     # Küçük harfe çevir
@@ -23,12 +21,11 @@ def clean_text(text):
     # Tokenize et
     words = nltk.word_tokenize(text)
 
-    # Stemming ve lemmatization
-    words = [stemmer.stem(word) for word in words if word not in stop_words]
-    words = [lemmatizer.lemmatize(word) for word in words]
+    # Stopword temizliği ve lemmatization
+    words = [lemmatizer.lemmatize(word) for word in words if word not in stop_words]
 
     # Geri birleştir
     return ' '.join(words)
 
 # The above code defines a function to clean text data by converting it to lowercase, removing special characters and numbers,
-# tokenizing the text, removing stopwords, and applying stemming and lemmatization. It then applies this function to the 'text' column of a DataFrame
+# tokenizing the text, removing stopwords, and applying lemmatization. It then applies this function to the 'text' column of a DataFrame
