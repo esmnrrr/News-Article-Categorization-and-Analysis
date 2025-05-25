@@ -39,3 +39,4 @@ def load_bbc_dataset(folder_path):
 
 # The above code loads the BBC dataset from a specified folder path, where each category is stored in a separate subfolder.
 # It reads the text files and creates a DataFrame with two columns: 'category' and 'text'.
+
