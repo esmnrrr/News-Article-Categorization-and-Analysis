@@ -40,3 +40,14 @@ def load_bbc_dataset(folder_path):
 # The above code loads the BBC dataset from a specified folder path, where each category is stored in a separate subfolder.
 # It reads the text files and creates a DataFrame with two columns: 'category' and 'text'.
 
+from categorization import predict_category
+
+# Test için örnek haber
+sample_news = """
+Apple shares rose today as the tech giant announced its latest earnings, 
+beating Wall Street expectations and seeing strong growth in iPhone sales.
+"""
+
+predicted = predict_category(model, vectorizer, sample_news)
+print(f"\n📰 Örnek haberin tahmin edilen kategorisi: {predicted}")
+# The above code predicts the category of a sample news article using the trained model and vectorizer.
